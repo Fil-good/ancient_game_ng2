@@ -1,0 +1,8 @@
+<h1>CreateRoll form</h1>
+<form #rollForm="ngForm" class="form" (ngSubmit)="createRoll(rollForm)">
+  <label class="roll-label">Insert the number of your roll result</label><input type="text" #number="ngModel" required min=0 max=15
+    name="rol" [(ngModel)]="roll.roll" />
+</form>
+<ul *ngIf="rollForm.submitted && rollForm.invalid">
+  <li *ngIf="number.errors && (number.errors['min'] || number.errors['max'])">Number must be between 0 and 15</li>
+</ul>
