@@ -1,11 +1,14 @@
-<h1>
-  Some text from app-root {{title}}!
-</h1>
 
-<app-create-roll-item (onRollCreated)="insertRollScore($event)"></app-create-roll-item>
+<h1>Insert your Roll score (dashboard for 2 players)</h1>
+<div class="player1" *ngIf="bowlingGamePlayer1.isActive" >
+  <h2>Input Player 1:</h2>
+<app-create-roll-item (onRollCreated)="insertRollPlayer1($event)"></app-create-roll-item>
+</div>
 
-<!-- *ngIf="currentPlayer='true'" -->
-<!-- *ngIf="currentPlayer='false'" -->
+<div *ngIf="bowlingGamePlayer2.isActive" class="player2">
+  <h2>Input Player 2: </h2>
+<app-create-roll-item (onRollCreated)="insertRollPlayer2($event)"></app-create-roll-item>
+</div>
 
 
 
@@ -20,15 +23,33 @@
     <td colspan ="3">frame5</td>
   </tr>
 
-  <tr>
+  <tr class="player1">
     <td>Player:1</td>
     <td *ngFor="let score of bowlingGamePlayer1.rolls">{{score.roll}}</td>
   </tr>
 
-  <tr>
+  <tr class="player2">
     <td>Player:2</td>
     <td *ngFor="let score of bowlingGamePlayer2.rolls">{{score.roll}}</td>
   </tr>
 
 
 </table>
+
+<!--
+
+<h1>rollsPlayer1</h1>
+<h2>{{rollsPlayer1 | json}}</h2> -->
+<!--
+<h1>rollsPerFramePlayer1</h1>
+<h2>{{rollsPerFramePlayer1 | json}}</h2>
+
+<h3>indexRollFrame</h3>
+<h3>{{indexRollFrame}}</h3>
+
+
+<h1>totalPinsPlayer1</h1>
+<h2>{{totalPinsPlayer1.totalPins}}</h2>
+
+<h1>index frame</h1>
+<h2>{{indexFrame}}</h2> -->

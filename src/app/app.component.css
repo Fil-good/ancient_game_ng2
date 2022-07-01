@@ -6,3 +6,13 @@ label:after {
 td {
   width: 30px;
 }
+
+.player1 {
+  background-color: blueviolet;
+  width: 50vw;
+}
+
+.player2 {
+  background-color: aqua;
+  width: 50vw;
+}

@@ -1,8 +1,14 @@
-<h1>CreateRoll form</h1>
+
+<!-- problem with passing variable from app component to create-roll-item component watch youtube: - parent- child - path-param (serive) (router) -->
+
+
+<!-- <h2>maxPins: {{maxPins}}</h2> -->
 <form #rollForm="ngForm" class="form" (ngSubmit)="createRoll(rollForm)">
-  <label class="roll-label">Insert the number of your roll result</label><input type="number" #number="ngModel" required min=0 max=15
+  <label class="roll-label">Insert the number of your roll result</label><input type="number" #number="ngModel" required min=0 max={{maxPins}}
     name="rol" [(ngModel)]="roll.roll" />
 </form>
 <ul *ngIf="rollForm.submitted && rollForm.invalid">
   <li *ngIf="number.errors && (number.errors['min'] || number.errors['max'])">Number must be between 0 and 15</li>
 </ul>
+
+<!-- <h1>totalPins - from create-roll-item.component{{totalPins.totalPins }}</h1> -->
