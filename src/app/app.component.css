@@ -2,3 +2,7 @@ label:after {
   content: "\a";
 
 }
+
+td {
+  width: 30px;
+}

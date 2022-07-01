@@ -7,4 +7,28 @@
 <!-- *ngIf="currentPlayer='true'" -->
 <!-- *ngIf="currentPlayer='false'" -->
 
-{{ bowlingGamePlayer1 | json }}
+
+
+<table>
+
+  <tr>
+    <td></td>
+    <td colspan="3">frame1</td>
+    <td colspan="3">frame2</td>
+    <td colspan ="3">frame3</td>
+    <td colspan ="3">frame4</td>
+    <td colspan ="3">frame5</td>
+  </tr>
+
+  <tr>
+    <td>Player:1</td>
+    <td *ngFor="let score of bowlingGamePlayer1.rolls">{{score.roll}}</td>
+  </tr>
+
+  <tr>
+    <td>Player:2</td>
+    <td *ngFor="let score of bowlingGamePlayer2.rolls">{{score.roll}}</td>
+  </tr>
+
+
+</table>

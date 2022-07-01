@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   bowlingGamePlayer1 = new BowlingGame([], "player1");
   bowlingGamePlayer2 = new BowlingGame([], "player2");
 
+
+
   // leave constructor empty of the real work
   constructor() {
 
