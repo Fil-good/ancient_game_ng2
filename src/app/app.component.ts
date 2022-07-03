@@ -49,8 +49,8 @@ export class AppComponent implements OnInit {
     this.indexRollFrame = 0;
     this.totalPinsPlayer1.totalPins = 0;
     this.rollsPerFramePlayer1 = [0, 0, 0];
-    this.bowlingGamePlayer1.isActive = false;
-    this.bowlingGamePlayer2.isActive = true;
+    this.bowlingGamePlayer1.isActive = !this.bowlingGamePlayer1.isActive;
+    this.bowlingGamePlayer2.isActive = !this.bowlingGamePlayer2.isActive;
     this.indexFrame += 1;
   }
 
@@ -92,37 +92,18 @@ export class AppComponent implements OnInit {
       if (this.indexRollFrame == 0) {
         this.rollsPlayer2.push(this.rollZero);
         this.rollsPlayer2.push(this.rollZero);
-        this.totalPinsPlayer1.totalPins = 0;
-        this.rollsPerFramePlayer1 = [0, 0, 0];
-        this.bowlingGamePlayer2.isActive = false;
-        this.bowlingGamePlayer1.isActive = true;
-        this.indexFrame += 1;
+        this.passToNextPlayer()
         // case spare
       } else if (this.indexRollFrame == 1) {
         this.rollsPlayer2.push(this.rollZero);
-        this.totalPinsPlayer1.totalPins = 0;
-        this.rollsPerFramePlayer1 = [0, 0, 0];
-        this.indexRollFrame = 0;
-        this.bowlingGamePlayer2.isActive = false;
-        this.bowlingGamePlayer1.isActive = true;
-        this.indexFrame += 1;
+        this.passToNextPlayer()
         // case 15 pins after 3 rolls
       } else {
-        this.indexRollFrame = 0;
-        this.rollsPerFramePlayer1 = [0, 0, 0];
-        this.totalPinsPlayer1.totalPins = 0;
-        this.bowlingGamePlayer2.isActive = false;
-        this.bowlingGamePlayer1.isActive = true;
-        this.indexFrame += 1;
+        this.passToNextPlayer()
       }
       // case not 15 pins in total
     } else if (this.indexRollFrame == 2) {
-      this.indexRollFrame = 0;
-      this.totalPinsPlayer1.totalPins = 0;
-      this.rollsPerFramePlayer1 = [0, 0, 0];
-      this.bowlingGamePlayer2.isActive = false;
-      this.bowlingGamePlayer1.isActive = true;
-      this.indexFrame += 1;
+      this.passToNextPlayer()
     } else {
       this.indexRollFrame += 1;
     }
