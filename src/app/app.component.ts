@@ -45,10 +45,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  // playGame(): void {
-
-
-  // }
+  passToNextPlayer() {
+    this.indexRollFrame = 0;
+    this.totalPinsPlayer1.totalPins = 0;
+    this.rollsPerFramePlayer1 = [0, 0, 0];
+    this.bowlingGamePlayer1.isActive = false;
+    this.bowlingGamePlayer2.isActive = true;
+    this.indexFrame += 1;
+  }
 
 // try to make a function per frame
   insertRollPlayer1(r:Roll):void {
@@ -60,37 +64,18 @@ export class AppComponent implements OnInit {
           if(this.indexRollFrame==0) {
             this.rollsPlayer1.push(this.rollZero);
             this.rollsPlayer1.push(this.rollZero);
-            this.totalPinsPlayer1.totalPins = 0;
-            this.rollsPerFramePlayer1 = [0,0,0];
-            this.bowlingGamePlayer1.isActive = false;
-            this.bowlingGamePlayer2.isActive = true;
-            this.indexFrame += 1;
+            this.passToNextPlayer()
             // case spare
           } else if (this.indexRollFrame==1) {
             this.rollsPlayer1.push(this.rollZero);
-            this.totalPinsPlayer1.totalPins = 0;
-            this.rollsPerFramePlayer1 = [0,0,0];
-            this.indexRollFrame = 0;
-            this.bowlingGamePlayer1.isActive = false;
-            this.bowlingGamePlayer2.isActive = true;
-            this.indexFrame += 1;
+            this.passToNextPlayer();
             // case 15 pins after 3 rolls
           } else {
-            this.indexRollFrame = 0;
-            this.rollsPerFramePlayer1 = [0, 0, 0];
-            this.totalPinsPlayer1.totalPins = 0;
-            this.bowlingGamePlayer1.isActive = false;
-            this.bowlingGamePlayer2.isActive = true;
-            this.indexFrame += 1;
+            this.passToNextPlayer()
             }
             // case not 15 pins in total
           } else if(this.indexRollFrame==2) {
-            this.indexRollFrame = 0;
-            this.totalPinsPlayer1.totalPins = 0;
-            this.rollsPerFramePlayer1 = [0,0,0];
-            this.bowlingGamePlayer1.isActive = false;
-            this.bowlingGamePlayer2.isActive = true;
-            this.indexFrame += 1;
+            this.passToNextPlayer()
             } else {
               this.indexRollFrame += 1;
             }
