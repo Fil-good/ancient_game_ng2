@@ -58,10 +58,10 @@ export class AppComponent implements OnInit {
     this.bowlingGamePlayer2.isActive = !this.bowlingGamePlayer2.isActive;
   }
 
-// try to make a function per frame
+// try to make a function per frame: check!
 // spare = 15 pins after 2 OR 3 rolls!!!!!!!!!!!!!!!!!
   insertRollPlayer1(r:Roll):void {
-    if (!this.GameIsOver()) {
+    if (this.rollsPlayer1.length <= this.maxNumberRollsPlayer1) {
       this.rollsPlayer1.push(r)
         this.rollsPerFrame[this.indexRollFrame] = r.roll; // array [0,0,0], starts with indexRollFrame 0
         this.totalPins.totalPins += this.rollsPerFrame[this.indexRollFrame]; // number, starts with 0
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
 
 // two functions for player 1/ player2 because you don't get the info from the form which player is at turn
   insertRollPlayer2(r:Roll):void {
-    if(!this.GameIsOver()) {
+    if (this.rollsPlayer2.length <= this.maxNumberRollsPlayer2) {
       this.rollsPlayer2.push(r) // specific to bowlGaPl2
       this.rollsPerFrame[this.indexRollFrame] = r.roll; // array [0,0,0], starts with indexRollFrame 0
       this.totalPins.totalPins += this.rollsPerFrame[this.indexRollFrame]; // number, starts with 0
@@ -143,7 +143,7 @@ export class AppComponent implements OnInit {
     this.bowlingGamePlayer2.isActive = false;
     }
   }
-   // refatore with another helper function "isGameOver()"
+   // if game is over for player 1 and not for player 2, then player 1 continues anyway !!! PROBLEM ! try to make 1 function for both players!!!!!!!
     GameIsOver(): boolean {
       if(this.rollsPlayer1.length > this.maxNumberRollsPlayer1 && this.rollsPlayer2.length > this.maxNumberRollsPlayer2) {
         return true;
