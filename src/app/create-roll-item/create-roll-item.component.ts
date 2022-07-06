@@ -11,7 +11,7 @@ import { Roll } from '../model/roll.model';
 export class CreateRollItemComponent implements OnInit {
 
 getTotalPins = new AppComponent;
-totalPins = this.getTotalPins.totalPinsPlayer1;
+totalPins = this.getTotalPins.totalPins;
 maxPins = 15 - this.totalPins.totalPins;
 
 
